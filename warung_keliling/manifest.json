@@ -1,0 +1,19 @@
+{
+    "short_name": "Warling",
+    "name": "Warling (Warung Keliling):Temukan Penjual Sekitarmu",
+    "icons": [{
+            "src": "/assets/icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "theme_color": "#000000"
+}

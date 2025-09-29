@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasbor Penjual - Warling</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <main class="container">
+        <div id="login-view">
+            <h1>Dasbor Penjual Warling</h1>
+            <article>
+                <header><h3 id="form-title">Masuk ke Akun Anda</h3></header>
+                <form id="auth-form">
+                    <label for="shop-name-input">Nama Usaha Anda</label>
+                    <input type="text" id="shop-name-input" placeholder="TokoBudiJaya" required autocomplete="username">
+                    <label for="pin-input">PIN (6 Digit Angka)</label>
+                    <input type="password" id="pin-input" placeholder="●●●●●●" required pattern="[0-9]{6}" title="PIN harus 6 digit angka" maxlength="6" inputmode="numeric" autocomplete="current-password">
+                    <button type="submit" id="auth-button">Masuk</button>
+                </form>
+                <footer><a href="#" id="toggle-mode-link">Belum punya akun? Buat akun baru</a></footer>
+            </article>
+            <p id="auth-message" class="hidden"></p>
+        </div>
+        <div id="dashboard-view" class="hidden">
+            <header>
+                <nav>
+                    <ul><li><strong id="welcome-message">Dasbor Usaha Anda</strong></li></ul>
+                    <ul>
+                        <li><a href="./index.html" class="secondary">Lihat Peta</a></li>
+                        <li><a href="#" id="logout-btn" role="button">Keluar</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <article>
+                <header>Profil Usaha</header>
+                <form id="profile-form">
+                    <label for="name">Nama Usaha (tidak dapat diubah)</label>
+                    <input type="text" id="name" name="name" readonly>
+                    <label for="description">Deskripsi Singkat</label>
+                    <textarea id="description" name="description"></textarea>
+                    <label for="phone_number">Nomor Kontak WA (Format: 628...)</label>
+                    <input type="tel" id="phone_number" name="phone_number" required>
+                    <label for="seller-type">Tipe Penjual</label>
+                    <select id="seller-type" name="seller-type" required>
+                        <option value="" disabled selected>-- Pilih Tipe --</option>
+                        <option value="barang">Toko / Jual Barang Tetap</option>
+                        <option value="jasa">Jasa</option>
+                        <option value="keliling">Pedagang Keliling</option>
+                        <option value="dadakan">Penjual Dadakan / Event</option>
+                    </select>
+                    <label for="broadcast_message">Pesan Hari Ini (Opsional)</label>
+                    <input type="text" id="broadcast_message" name="broadcast_message">
+                    <button type="submit">Simpan Profil</button>
+                </form>
+            </article>
+            <article>
+                 <header>Lokasi & Status Usaha</header>
+                 <button id="update-location-btn">Perbarui Lokasi Saya Saat Ini</button>
+                 <p id="location-status"></p>
+            </article>
+            <article>
+                <header>Produk & Promo (<span id="product-counter">0/10</span>)</header>
+                <form id="product-form">
+                    <div class="grid"><input type="text" id="product-name" placeholder="Nama produk" required><input type="number" id="product-price" placeholder="Harga" required></div>
+                    <button type="submit" id="add-product-btn">Tambah Produk</button>
+                </form>
+                <p id="limit-notice" class="hidden" style="color: orange;">Batas produk tercapai.</p>
+                <div id="product-list"></div>
+            </article>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./assets/js/supabase-client.js"></script>
+    <script src="./assets/js/seller.js"></script>
+</body>
+</html>

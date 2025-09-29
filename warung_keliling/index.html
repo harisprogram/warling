@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warling (Warung Keliling) - Temukan Penjual di Dekatmu</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css"> 
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body id="page-index">
+    <main class="container">
+        <dialog id="disclaimer-modal">
+            <article>
+                <header><h3>Selamat Datang! Beberapa Hal Penting Sebelum Memulai</h3></header>
+                <p>Aplikasi ini hanyalah platform penghubung. Segala transaksi dan interaksi adalah tanggung jawab penuh antara Pembeli dan Penjual.</p>
+                <p>Dengan melanjutkan, Anda menyetujui ketentuan ini.</p>
+                <footer><button id="agree-btn">Saya Mengerti & Setuju</button></footer>
+            </article>
+        </dialog>
+        
+        <dialog id="share-qr-modal">
+            <article>
+                <header><a href="#close" aria-label="Close" class="close"></a>Bagikan Aplikasi Warling!</header>
+                <p>Pindai (Scan) QR Code ini untuk membuka aplikasi di perangkat lain.</p>
+                <div id="qr-code-container" style="text-align: center; margin: 1rem 0;"></div>
+            </article>
+        </dialog>
+
+        <div id="welcome-view" class="text-center">
+            <h1>Warling</h1>
+            <p>Warung Keliling di Ujung Jarimu.</p>
+            <div class="grid">
+                <button id="buyer-btn" disabled>🗺️ Saya Pembeli</button>
+                <a href="./seller.html" id="seller-link" role="button" class="contrast disabled" aria-disabled="true">🏪 Saya Penjual</a>
+            </div>
+            <button id="share-app-btn" class="secondary outline" style="margin-top: 1rem;" disabled>Bagikan Aplikasi (QR)</button>
+        </div>
+
+        <div id="buyer-view" class="hidden">
+             <h2>Peta Penjual di Sekitar Anda</h2>
+             
+             <div id="loading-overlay" class="hidden">
+                <article>
+                    <progress></progress>
+                    <p>Mencari lokasi Anda & memuat data penjual...</p>
+                </article>
+             </div>
+
+             <form id="map-controls-form" class="grid" style="margin-bottom: 1rem;">
+                <input type="search" id="search-input" placeholder="Cari bakso, jasa, dll...">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <label for="radius-slider" style="margin-bottom: 0; white-space: nowrap;">Jarak:</label>
+                    <input type="range" min="1" max="25" value="5" id="radius-slider" style="margin-bottom: 0;">
+                    <span id="radius-value">5 km</span>
+                </div>
+                <a href="#" id="exit-buyer-view-btn" role="button" class="secondary outline">Kembali</a>
+             </form>
+             
+             <div id="map"></div>
+        </div>
+
+        <footer class="text-center" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--muted-border-color);">
+            <p><strong>Warling (Warung Keliling)</strong><br>Dibuat dengan ❤️ oleh <a href="http://goaries.com" target="_blank" rel="noopener noreferrer">GoAries.com</a></p>
+        </footer>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./assets/js/supabase-client.js"></script> 
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

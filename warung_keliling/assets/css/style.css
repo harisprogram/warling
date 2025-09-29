@@ -1,0 +1,100 @@
+/* File: /assets/css/style.css - Golden Master Final Version */
+
+
+/* --- Gaya Global & Penyesuaian Pico.css --- */
+
+body {
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+main.container {
+    padding-bottom: 2rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+button:disabled,
+a.disabled {
+    background-color: var(--muted-border-color);
+    border-color: var(--muted-border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* --- Tampilan Peta & Kontrolnya --- */
+
+#map {
+    height: 60vh;
+    width: 100%;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--muted-border-color);
+}
+
+#map-controls-form {
+    align-items: center;
+}
+
+
+/* --- Gaya Halaman Penjual --- */
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--muted-border-color);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+#login-view article {
+    margin-bottom: 2rem;
+}
+
+#auth-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+
+/* --- Perbaikan KRUSIAL untuk Modal/Dialog --- */
+
+dialog>article,
+dialog button,
+dialog a {
+    pointer-events: auto !important;
+}
+
+dialog::backdrop {
+    background-color: rgba(29, 36, 47, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+
+/* --- Gaya untuk Indikator Loading --- */
+
+#loading-overlay {
+    position: absolute;
+    inset: 0;
+    /* Shortcut untuk top, bottom, left, right = 0 */
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#loading-overlay>article {
+    border: 1px solid var(--muted-border-color);
+    box-shadow: var(--card-box-shadow);
+}
